@@ -16,7 +16,6 @@ export class AuditService {
   constructor(private http:HttpClient) { }
 
   public getAudits(pageIndex,pageSize,filter?){
-    console.log(filter)
     let params= new HttpParams();
     if(filter){
       if(filter.statusCode){

@@ -37,10 +37,10 @@ export class AuditsComponent implements OnInit {
 
   ngOnInit():void{
     this.getFilterValues();
-    this.getUsers(0,10)
+    this.getAudits(0,5)
   }
 
-  public getUsers(pageIndex,pageSize){
+  public getAudits(pageIndex,pageSize){
     const formValues = this.form.getRawValue();
     this.audit.getAudits(pageIndex,pageSize,formValues).subscribe((res:any)=>{
       this.dataSource = res.audits;
@@ -61,7 +61,7 @@ export class AuditsComponent implements OnInit {
   }
 
   public pageNavigate(event:PageEvent){
-    this.getUsers(event.pageIndex,event.pageSize);
+    this.getAudits(event.pageIndex,event.pageSize);
   }
 
   private formInit(){
@@ -74,12 +74,12 @@ export class AuditsComponent implements OnInit {
 
   public applyFilter(){
     this.paginator.firstPage();
-    this.getUsers(0,10);
+    this.getAudits(this.paginator.pageIndex,this.paginator.pageSize);
   }
 
   public clearFilter(){
     this.form.reset();
     this.paginator.firstPage();
-    this.getUsers(0,10);
+    this.getAudits(this.paginator.pageIndex,this.paginator.pageSize);
   }
 }
