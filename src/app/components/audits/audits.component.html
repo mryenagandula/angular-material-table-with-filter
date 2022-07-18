@@ -11,7 +11,9 @@
             <div class="col-md-2" style="margin-left: 10px;">
                 <mat-form-field appearance="outline" floatLabel="never">
                     <mat-select formControlName="statusMessage" placeholder="Status Message">
-                    <mat-option *ngFor="let statusMessage of filterValues.statusMessages" [value]="statusMessage">{{statusMessage === 'OK' ? 'LOGIN SUCCESS' :'LOGIN FAILED'}}</mat-option>
+                    <mat-option *ngFor="let statusMessage of filterValues.statusMessages" [value]="statusMessage">
+                        {{statusMessage === 'OK' ? 'LOGIN SUCCESS' :'LOGIN FAILED'}}
+                    </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -89,7 +91,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <mat-paginator [length]="totalCount"
-                      [pageSize]="10"
+                      [pageSize]="5"
                       [pageSizeOptions]="[5, 10, 25, 100]"
                       (page)="pageNavigate($event)"
                       aria-label="Select page">
